@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/products', function () {
+    return response()->json(
+        [
+            "message" => "GET Sukses"
+        ]
+    );
+});
+
+Route::post('/products', function () {
+    return response()->json(
+        [
+            "message" => "POST Sukses"
+        ]
+    );
+});
