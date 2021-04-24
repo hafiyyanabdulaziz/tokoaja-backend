@@ -18,18 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/products', function () {
-    return response()->json(
-        [
-            "message" => "GET Sukses"
-        ]
-    );
-});
+Route::get('/products', 'ProductController@get');
 
-Route::post('/products', function () {
-    return response()->json(
-        [
-            "message" => "POST Sukses"
-        ]
-    );
-});
+Route::post('/products', 'ProductController@post');
