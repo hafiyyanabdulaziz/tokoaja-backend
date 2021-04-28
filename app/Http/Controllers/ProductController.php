@@ -46,4 +46,49 @@ class ProductController extends Controller
             ]
         );
     }
+
+    function put($id, Request $request)
+    {
+        $product = Product::where('id', $id)->first();
+        $product->name = $request->name ? $request->name : $product->name;
+        $product->toko = $request->toko ? $request->toko : $product->toko;
+        $product->isOpen = $request->isOpen ? $request->isOpen : $product->isOpen;
+        $product->description = $request->description ? $request->description : $product->description;
+
+        $product->save();
+
+        if ($product) {
+            return response()->json(
+                [
+                    "message" => "PUT Sukses ID = " . $id
+                ]
+            );
+        }
+        return response()->json(
+            [
+                "message" => "PUT Gagal ID " . $id . " Tidak Ada"
+            ],
+            400
+        );
+    }
+
+    function delete($id)
+    {
+        $product = Product::where('id', $id)->first();
+
+        if ($product) {
+            $product->delete();
+            return response()->json(
+                [
+                    "message" => "DELETE Sukses ID = " . $id
+                ]
+            );
+        }
+        return response()->json(
+            [
+                "message" => "DELETE Gagal ID " . $id . " Tidak Ada"
+            ],
+            400
+        );
+    }
 }

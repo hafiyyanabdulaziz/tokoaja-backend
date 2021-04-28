@@ -23,3 +23,7 @@ Route::get('/products', 'ProductController@get');
 Route::get('/products/{id}', 'ProductController@getByID');
 
 Route::post('/products', 'ProductController@post');
+
+Route::put('/products/{id}', 'ProductController@put');
+
+Route::delete('/products/{id}', 'ProductController@delete');
